@@ -5,11 +5,21 @@ public abstract class Vehicle {
   private String brand;
   private String model;
   private int year;
+  private Color color;
+  private VehicleStatus vehicleStatus;
 
   public Vehicle(String brand, String model, int year) {
     this.brand = brand;
     this.model = model;
     this.year = year;
+  }
+
+  public Vehicle(String brand, Color color, String model, VehicleStatus vehicleStatus, int year) {
+      this.brand = brand;
+      this.color = color;
+      this.model = model;
+      this.vehicleStatus = vehicleStatus;
+      this.year = year;
   }
 
   public String getBrand() {
@@ -37,14 +47,18 @@ public abstract class Vehicle {
     }
     this.year = year;
   }
-
+  
   @Override
   public String toString() {
-    return "Vehicle{" +
-            "brand='" + brand + '\'' +
-            ", model='" + model + '\'' +
-            ", year=" + year +
-            '}';
+      StringBuilder sb = new StringBuilder();
+      sb.append("Vehicle{");
+      sb.append("brand=").append(brand);
+      sb.append(", model=").append(model);
+      sb.append(", year=").append(year);
+      sb.append(", color=").append(color);
+      sb.append(", vehicleStatus=").append(vehicleStatus);
+      sb.append('}');
+      return sb.toString();
   }
   
   public void stop() {
@@ -54,4 +68,5 @@ public abstract class Vehicle {
   //* Tambien podemos definir metodos de tipo abstracto que seran heredados
   //* e implementados por las subclases
   public abstract void drive();
+
 }
